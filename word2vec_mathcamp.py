@@ -14,9 +14,9 @@ def word2vec(word, matchCase=True):
 
 
 def gvecs(targetWords, matchCase=True, asDict=False, verbose=1):
-    """ Returns dict {word -> Google representation of word}.
-            matchCase: angel is different from Angel
-            asDict: {word:vec} if true, else [list of vecs] """
+    """ If asDict==True, then returns a dict {word: vec}.
+        Else, returns a list of vectors, one for each word in targetWords.
+        matchCase: if True, then angel is different from Angel """
     if not asDict: assert type(targetWords) == list
     targetWords = list(targetWords)
     wordsToFind = len(targetWords)
@@ -55,7 +55,8 @@ def gvecs(targetWords, matchCase=True, asDict=False, verbose=1):
 
 
 def gstream():
-    """ Yields pairs (word, vec) from the 300-dimensional Google .gz file.
+    """ Yields pairs (word, vec) from the 300-dimensional Google .gz file,
+    from most common to least common word.
     Example use:
     for (word, vec) in gstream(): [do something]"""
     with gzip.GzipFile(gfile) as f:
