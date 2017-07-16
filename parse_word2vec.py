@@ -9,14 +9,17 @@ gfile = "C:/Python27/random_files/google_word2vec.gz"
 
 def word2vec(word, matchCase=True):
     """ Returns the 300-element vector corresponding to `word`.
-    If you want to vectorize more than one word at once, gvecs is faster. """
-    return gvecs([word], matchCase=True, verbose=0)[0]
+    If you want to vectorize more than one word at once, gvecs is faster.
+    matchCase: if True, then angel is different from Angel """
+    return gvecs([word], matchCase=matchCase, verbose=0)[0]
 
 
 def gvecs(targetWords, matchCase=True, asDict=False, verbose=1):
-    """ If asDict==True, then returns a dict {word: vec}.
+    """ Finds the vector for each word in targetWords.
+        If asDict==True, then returns a dict {word: vec}.
         Else, returns a list of vectors, one for each word in targetWords.
-        matchCase: if True, then angel is different from Angel """
+        matchCase: if True, then angel is different from Angel
+        verbose: print words as you find them """
     if not asDict: assert type(targetWords) == list
     targetWords = list(targetWords)
     wordsToFind = len(targetWords)
