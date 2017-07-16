@@ -20,7 +20,7 @@ def gvecs(targetWords, matchCase=True, asDict=False, verbose=True):
         Else, returns a list of vectors, one for each word in targetWords.
         matchCase: if True, then angel is different from Angel
         verbose: print words as you find them """
-    if not asDict: assert type(targetWords) == list
+    if not asDict: assert type(targetWords) in (list, tuple)
     targetWords = list(targetWords)
     wordsToFind = len(targetWords)
     # get locations of unfound words:
