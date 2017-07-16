@@ -44,9 +44,7 @@ def gvecs(targetWords, matchCase=True, asDict=False, verbose=True):
             normalizedWord = word.replace("_"," ")
             if not matchCase: normalizedWord = normalizedWord.lower()
             if normalizedWord in unfound:
-                vec = [struct.unpack('>f',
-                    nums[4*i+3:4*i-1:-1] if i>0 else nums[3::-1])[0] \
-                   for i in xrange(300)]
+                vec = struct.unpack('<'+'f'*300, nums)
                 if asDict:
                     D[targetWords[unfound[word]]] = vec
                 else:
@@ -76,9 +74,7 @@ def gstream():
             # The next line interprets every 4-byte chunk as a floating point.
             # See the "value = sign * exp * pre" answer here:
             # https://stackoverflow.com/questions/27324292
-            vec = [struct.unpack('>f',
-                    nums[4*i+3:4*i-1:-1] if i>0 else nums[3::-1])[0] \
-                   for i in xrange(300)]
+            vec = struct.unpack('<'+'f'*300, nums)
             yield (word, vec)
     
 def unit(vec):
