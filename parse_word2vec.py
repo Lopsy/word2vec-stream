@@ -14,7 +14,7 @@ def word2vec(word, matchCase=True):
     return gvecs([word], matchCase=matchCase, verbose=0)[0]
 
 
-def gvecs(targetWords, matchCase=True, asDict=False, verbose=1):
+def gvecs(targetWords, matchCase=True, asDict=False, verbose=True):
     """ Finds the vector for each word in targetWords.
         If asDict==True, then returns a dict {word: vec}.
         Else, returns a list of vectors, one for each word in targetWords.
