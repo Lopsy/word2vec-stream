@@ -2,7 +2,7 @@
 This is a Python 2 tool for parsing Google's pretrained word2vec vector file (which you can find at https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit) without having to load it all into RAM.
 
 # Getting Started
-First, unzip that file and edit the filepath in word2vec.py.
+First, unzip the big vector file, and edit the filepath in word2vec.py appropriately.
 Then, edit the WORD_FILEPATH in words2vec.py to whatever you want, and run the CREATE_WORD_FILE() function in words2vec.py.
 
 # Useful functions
