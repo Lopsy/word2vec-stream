@@ -16,8 +16,15 @@ nd is the normalized dot product:
 """
 
 # Replace this with the filepath to your gwords.txt file
-
 WORD_FILEPATH = "random_files/gwords.txt"
+
+def CREATE_WORD_FILE():
+    """ Run this function ONCE, to create a file containing the list of
+    words in the word2vec database. Then you can delete this function
+    for all I care. """
+    with open(WORD_FILEPATH, "w") as f:
+        for word,vec in gstream():
+            f.write(word+"\n")
 
 import struct
 from word2vec import add, neg, gstream, normalizedDot, unit
