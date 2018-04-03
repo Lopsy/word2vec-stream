@@ -1,12 +1,17 @@
 # py-word2vec
 This is a Python 2 tool for parsing Google's pretrained word2vec vector file (which you can find at https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit) without having to load it all into RAM.
 
-You don't even have to unzip it! Just edit the "gfile" variable in parse_word2vec.py to the filepath for your large .gz file.
+# Getting Started
+First, unzip that file and edit the filepath in word2vec.py.
+Then, edit the WORD_FILEPATH in words2vec.py to whatever you want, and run the CREATE_WORD_FILE() function in words2vec.py.
 
-The parse_word2vec.py file includes these functions:
-
-- word2vec -- try word2vec("rabbit"); faster for more common words
-- gvecs -- try gvecs(["rabbit", "carrot", "ghost"]); faster than word2vec for looking up multiple words at once; only as slow as the least common word
-- gstream -- a generator that yields pairs (word, vec) in order from most common to least common word
+# Useful functions
+from word2vec import gstream
+gstream(n=None) --> yields the first n (word, vec) pairs from the database. If n is None, instead yields all pairs.
+from words2vec import V, nd
+V("rabbit") --> Returns the 300-element vector for "rabbit"
+"rabbit" in V --> True
+nd(V("rabbit"), V("carrot")) --> normalized dot product
+nd("rabbit", "carrot") --> automatically applies V to the inputs
 
 Please credit Linus Hamilton if you use this program to make something cool.
